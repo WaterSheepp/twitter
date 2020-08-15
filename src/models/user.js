@@ -8,6 +8,18 @@ const schema = Schema({
     password: {type: String, require: true},
     tweets:[{
         tweet: String,
+        retweet: {type:Schema.Types.ObjectId, ref: "tweets"},
+        likes:[{ 
+            type: Schema.Types.ObjectId, ref: "user" 
+        }],
+        replies:[{
+            user: String,
+            reply: String
+        }],
+
+        retweets:[{
+            type: Schema.Types.ObjectId, ref: "user"
+        }],
     }],
     following:[{
         user_name: String,
